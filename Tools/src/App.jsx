@@ -1,23 +1,18 @@
-import { useState } from "react";
-import { createBrowserRouter, RouterProvider, Route, Navigate } from "react-router-dom";
-import ML from './pages/ML/MachineLearning.jsx';
-import NLP from './pages/NLP/Nlp.jsx'
-import Login from './pages/Auth/Auth.jsx';
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import ML from "./ML";
+import NLP from "./NLP";
 import AppLayout from "./AppLayout";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <AppLayout />,
-    children: [
-      { path: "ml", element: <ML /> },
-      { path: "nlp", element: <NLP /> },
-    ],
-  },
-]);
-
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <Router>
+      <AppLayout />
+      <Routes>
+        <Route path="/ml" element={<ML />} />
+        <Route path="/nlp" element={<NLP />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
