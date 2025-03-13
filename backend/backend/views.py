@@ -9,41 +9,11 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from pycaret.classification import setup as cls_setup, compare_models as cls_compare, pull as cls_pull
 from pycaret.regression import setup as reg_setup, compare_models as reg_compare, pull as reg_pull
+from pycaret.classification import setup, compare_models
+
 
 @method_decorator(csrf_exempt, name='dispatch')
 class AutomlTopsisView(View):
-    def topsis(self, df, weights_list, impacts_list):
-        """
-        Applies TOPSIS on a decision matrix (df) with given weights and impacts.
-        df: DataFrame containing candidate model performance metrics (only the columns used for TOPSIS).
-        weights_list: List of weights for each metric.
-        impacts_list: List of impacts ('+' means maximize, '-' means minimize) for each metric.
-        Returns a numpy array with TOPSIS scores.
-        """
-        X = df.values.astype(float)
-        # Normalize each column (vector normalization)
-        norm = np.sqrt((X ** 2).sum(axis=0))
-        X_norm = X / norm
-        weighted_X = X_norm * np.array(weights_list)
-        # Determine ideal best and worst values for each criterion
-        ideal_best = []
-        ideal_worst = []
-        for j, impact in enumerate(impacts_list):
-            if impact == '+':
-                ideal_best.append(weighted_X[:, j].max())
-                ideal_worst.append(weighted_X[:, j].min())
-            else:
-                ideal_best.append(weighted_X[:, j].min())
-                ideal_worst.append(weighted_X[:, j].max())
-        ideal_best = np.array(ideal_best)
-        ideal_worst = np.array(ideal_worst)
-        # Compute separation measures
-        separation_best = np.sqrt(((weighted_X - ideal_best) ** 2).sum(axis=1))
-        separation_worst = np.sqrt(((weighted_X - ideal_worst) ** 2).sum(axis=1))
-        # Calculate TOPSIS score (relative closeness to ideal solution)
-        scores = separation_worst / (separation_best + separation_worst)
-        return scores
-
     def post(self, request, *args, **kwargs):
         try:
             # Extract POST fields
@@ -79,22 +49,45 @@ class AutomlTopsisView(View):
                 for chunk in file.chunks():
                     dest.write(chunk)
 
+
+            # data = {
+            #     'feature_1': np.random.rand(100),  # Random numerical data
+            #     'feature_2': np.random.randint(1, 100, size=100),  # Random integer data
+            #     'category': np.random.choice(['A', 'B', 'C'], size=100),  # Random categorical data
+            #     'target': np.random.choice([0, 1], size=100)  # Binary target variable for classification
+            # }
+
+
             # Read CSV into a DataFrame
             df = pd.read_csv(file_path)
+            
             if target_variable not in df.columns:
                 return JsonResponse({"error": f"Target variable '{target_variable}' not found in CSV"}, status=400)
-
-            # Setup PyCaret based on problem type
+            
             if problem_type == "classification":
-                cls_setup(data=df, target=target_variable, silent=True, verbose=False)
-                cls_compare()
-                results = cls_pull()
+                setup(data=df, target=target_variable, remove_outliers = True,normalize = True, verbose=False)
+                best_model = compare_models()
+                print(best_model)
+
             elif problem_type == "regression":
-                reg_setup(data=df, target=target_variable, silent=True, verbose=False)
-                reg_compare()
-                results = reg_pull()
+                setup(data=df, target=target_variable, verbose=False)
+                best_model = compare_models()
+                print(best_model)
+
             else:
                 return JsonResponse({"error": "Invalid problem type. Must be 'classification' or 'regression'."}, status=400)
+            
+            return JsonResponse({
+                "message": "AutoML and TOPSIS ranking completed successfully!",
+                "best_model": best_model,
+            }, status=200)
+            
+        
+            # Setup PyCaret based on problem type
+            
+
+
+            
             
             # Ensure model names are available
             if "Model" not in results.columns:

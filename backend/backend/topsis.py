@@ -1,3 +1,6 @@
+import pandas as pd 
+import numpy as np
+
 def topsis(self, df, weights_list, impacts_list):
         """
         Applies TOPSIS on a decision matrix (df) with given weights and impacts.
