@@ -1,18 +1,21 @@
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import ML from "./ML";
-import NLP from "./NLP";
-import AppLayout from "./AppLayout";
+import { HashRouter, Routes, Route } from "react-router-dom";
+import AppLayout from "./layouts/AppLayout";
+import Home from "./pages/Home/Home.jsx";
+import ML from "./pages/ML/MachineLearning.jsx";
+import NLP from "./pages/NLP/Nlp.jsx";
 
-function App() {
+const App = () => {
   return (
-    <Router>
-      <AppLayout />
+    <HashRouter> {/* HashRouter ensures compatibility with GitHub Pages */}
       <Routes>
-        <Route path="/ml" element={<ML />} />
-        <Route path="/nlp" element={<NLP />} />
+        <Route path="/" element={<AppLayout />}>
+          <Route index element={<Home />} />
+          <Route path="ml" element={<ML />} />
+          <Route path="nlp" element={<NLP />} />
+        </Route>
       </Routes>
-    </Router>
+    </HashRouter>
   );
-}
+};
 
 export default App;
