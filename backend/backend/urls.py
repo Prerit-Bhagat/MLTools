@@ -18,9 +18,10 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
-from .views import AutomlTopsisView
+from .views import *
 
 
 urlpatterns = [
     path("automl/", AutomlTopsisView.as_view(), name="automl"),
+    # path('student/', StudentList.as_view(), name='student-list'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
