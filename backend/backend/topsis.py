@@ -1,34 +1,37 @@
-import pandas as pd 
 import numpy as np
+import pandas as pd
 
-def topsis(self, df, weights_list, impacts_list):
-        """
-        Applies TOPSIS on a decision matrix (df) with given weights and impacts.
-        df: DataFrame containing candidate model performance metrics (only the columns used for TOPSIS).
-        weights_list: List of weights for each metric.
-        impacts_list: List of impacts ('+' means maximize, '-' means minimize) for each metric.
-        Returns a numpy array with TOPSIS scores.
-        """
-        X = df.values.astype(float)
-        # Normalize each column (vector normalization)
-        norm = np.sqrt((X ** 2).sum(axis=0))
-        X_norm = X / norm
-        weighted_X = X_norm * np.array(weights_list)
-        # Determine ideal best and worst values for each criterion
-        ideal_best = []
-        ideal_worst = []
-        for j, impact in enumerate(impacts_list):
-            if impact == '+':
-                ideal_best.append(weighted_X[:, j].max())
-                ideal_worst.append(weighted_X[:, j].min())
-            else:
-                ideal_best.append(weighted_X[:, j].min())
-                ideal_worst.append(weighted_X[:, j].max())
-        ideal_best = np.array(ideal_best)
-        ideal_worst = np.array(ideal_worst)
-        # Compute separation measures
-        separation_best = np.sqrt(((weighted_X - ideal_best) ** 2).sum(axis=1))
-        separation_worst = np.sqrt(((weighted_X - ideal_worst) ** 2).sum(axis=1))
-        # Calculate TOPSIS score (relative closeness to ideal solution)
-        scores = separation_worst / (separation_best + separation_worst)
-        return scores
+def topsisfunction(df, weights, impacts):
+    """
+    Apply the TOPSIS method to rank models.
+
+    Parameters:
+    - df: DataFrame (model performance metrics with numerical values)
+    - weights: List (weights for each criterion)
+    - impacts: List (either '+' for beneficial or '-' for non-beneficial)
+
+    Returns:
+    - List of TOPSIS scores for each model
+    """
+
+    # Convert to NumPy array for calculations
+    data = df.to_numpy().astype(float)
+
+    # Normalize the matrix
+    norm_data = data / np.sqrt((data ** 2).sum(axis=0))
+
+    # Apply weights
+    weighted_data = norm_data * weights
+
+    # Identify ideal best and worst
+    ideal_best = np.where(np.array(impacts) == '+', weighted_data.max(axis=0), weighted_data.min(axis=0))
+    ideal_worst = np.where(np.array(impacts) == '+', weighted_data.min(axis=0), weighted_data.max(axis=0))
+
+    # Calculate distances from ideal best and worst
+    distance_best = np.sqrt(((weighted_data - ideal_best) ** 2).sum(axis=1))
+    distance_worst = np.sqrt(((weighted_data - ideal_worst) ** 2).sum(axis=1))
+
+    # Compute TOPSIS score
+    topsis_scores = distance_worst / (distance_best + distance_worst)
+
+    return topsis_scores

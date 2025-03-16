@@ -1,0 +1,55 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: 'Satoshi';
+    src: url('/fonts/Satoshi-Regular.woff2') format('woff2'),
+         url('/fonts/Satoshi-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Satoshi', sans-serif;
+}
+
+.Main {
+    background-image: url('Background.jpg'); /* Fix: use url() */
+    background-size: cover;  /* Ensures the image covers the entire section */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+    height: 100vh; /* Ensures it takes full viewport height */
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    color: white; /* Ensures text is visible on dark backgrounds */
+    border: solid white;
+    padding-left: 4%;
+    
+}
+.Main h3 {
+    margin-top: 8%;
+    background-color: white; /* Fill with white */
+    color: black; /* Text color for contrast */
+    border-radius: 50px; /* Smooth curved border */
+    padding: 0.5rem 1.5rem; /* Adjust padding for better appearance */
+    display: inline-block; /* Prevent full-width expansion */
+    font-weight: bold; /* Make text stand out */
+    font-size: 1rem; /* Adjust font size */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add slight shadow for depth */
+}
+
+.Main h1{
+    font-size: 4rem;
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    border: solid blue;
+    
+    /* padding: 0.5% 0%; */
+}
+.Main p{
+    width: 50%;
+    border: solid red;
+    padding: 2.5% 0%;
+}
