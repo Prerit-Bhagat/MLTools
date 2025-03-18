@@ -1,7 +1,7 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
 import Home from '@pages/Home/Home.jsx';
-import ML from '@pages/Ml/MachineLearning.jsx';
+import ML from '../src/pages/ML/MachineLearning.jsx'
 import NLP from '@pages/Nlp/Nlp.jsx';
 import About from '@pages/About/Aboutus.jsx';
 const App = () => {
