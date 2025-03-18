@@ -5,5 +5,9 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   base: "/MLTools/", // Must match your GitHub Pages repo name
   plugins: [react(),tailwindcss(),],
-  
+  resolve: {
+    alias: {
+      '@pages': '/src/pages', // Alias to simplify import paths
+    },
+  },
 });
