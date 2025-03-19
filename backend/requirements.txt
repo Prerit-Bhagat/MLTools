@@ -1,0 +1,10 @@
+Django==5.1.7 
+pycaret 
+gunicorn 
+psycopg2-binary==2.9.10 
+psycopg2==2.9.10
+sqlparse==0.5.0
+typing_extension==4.7.0
+numpy 
+pandas
+dj-database-url==2.3.0
