@@ -15,30 +15,36 @@ const ML = () => {
         e.preventDefault();
         setError("");
         setResult(null);
-
+    
         if (!file || !targetVariable || !weights || !impacts) {
             setError("Please select a file and enter all required fields.");
             return;
         }
-
+    
         const formData = new FormData();
         formData.append("file", file);
         formData.append("target_variable", targetVariable);
         formData.append("problem_type", problemType);
-        formData.append("weights", weights);  // ✅ Send as a plain string
-        formData.append("impacts", impacts);  // ✅ Send as a plain string
-
+        formData.append("weights", weights);
+        formData.append("impacts", impacts);
+    
+        
+        for (let [key, value] of formData.entries()) {
+            console.log(`${key}:`, value);
+        }
+    
         try {
             const response = await axios.post("http://127.0.0.1:8000/automl/", formData, {
                 headers: { "Content-Type": "multipart/form-data" }
             });
-            console.log("API Response:", response.data);  // ✅ Debug
+            console.log("API Response:", response.data);
             setResult(response.data);
         } catch (err) {
-            console.error("API Error:", err.response?.data || err);  // ✅ Log error
+            console.error("API Error:", err.response?.data || err);
             setError(err.response?.data?.error || "Something went wrong.");
         }
     };
+    
 
     return (
         <div className="ml-container">
