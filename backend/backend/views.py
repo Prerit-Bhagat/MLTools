@@ -29,7 +29,7 @@ class AutomlTopsisView(APIView):
             print("Target Variable:", target_variable)
             print("Problem Type:", problem_type)
             print("Weights:", weights)
-            print("Impacts:", impacts)
+            # print("Impacts:", impacts)
 
             
 
