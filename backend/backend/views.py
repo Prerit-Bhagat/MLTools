@@ -23,7 +23,7 @@ class AutomlTopsisView(APIView):
             file = request.FILES.get("file")
             # Ensure weights and impacts are properly parsed
             weights = list(map(int, request.POST.get("weights", "").split(",")))  # Convert from JSON string to list
-            impacts = request.POST.get("impacts", "").split(",")  # Convert from JSON string to list
+            # impacts = request.POST.get("impacts", "").split(",")  # Convert from JSON string to list
 
            # Debugging: Print the extracted values
             print("Target Variable:", target_variable)
