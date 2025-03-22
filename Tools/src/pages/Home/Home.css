@@ -44,12 +44,12 @@ body {
 .Main h1{
     font-size: 4rem;
     /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
-    border: solid blue;
+    /* border: solid blue; */
     
     /* padding: 0.5% 0%; */
 }
 .Main p{
     width: 50%;
-    border: solid red;
+    /* border: solid red; */
     padding: 2.5% 0%;
 }
