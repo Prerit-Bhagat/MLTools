@@ -23,14 +23,18 @@ class AutomlTopsisView(APIView):
             file = request.FILES.get("file")
             # Ensure weights and impacts are properly parsed
             weights = list(map(int, request.POST.get("weights", "").split(",")))  # Convert from JSON string to list
-            impacts = request.POST.get("impacts", "").split(",")  # Convert from JSON string to list
+            # impacts = request.POST.get("impacts", "").split(",")  # Convert from JSON string to list
 
            # Debugging: Print the extracted values
             print("Target Variable:", target_variable)
             print("Problem Type:", problem_type)
             print("Weights:", weights)
             print("Impacts:", impacts)
-
+            
+            if problem_type == 'classification':
+                impacts = ['+', '+', '+', '+', '+', '-']  # [Accuracy, Precision, Recall, F1-score, AUC-ROC, Log Loss]
+            else:
+                impacts = ['+', '-', '-', '-', '-', '-']
             
 
             # return Response({"HJe":"dsd"})

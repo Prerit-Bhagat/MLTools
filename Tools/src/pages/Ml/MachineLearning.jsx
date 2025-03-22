@@ -59,7 +59,7 @@ const ML = () => {
                             <option value="regression">Regression</option>
                         </select>
                         <input type="text" placeholder="Weights (comma-separated)" value={weights} onChange={(e) => setWeights(e.target.value)} />
-                        <input type="text" placeholder="Impacts (+ or -, comma-separated)" value={impacts} onChange={(e) => setImpacts(e.target.value)} />
+                        
                         <button type="submit">Submit</button>
                     </form>
                 ) : (
@@ -86,3 +86,5 @@ const ML = () => {
 };
 
 export default ML;
+
+{/* <input type="text" placeholder="Impacts (+ or -, comma-separated)" value={impacts} onChange={(e) => setImpacts(e.target.value)} /> */}
