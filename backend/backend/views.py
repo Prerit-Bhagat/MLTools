@@ -23,18 +23,14 @@ class AutomlTopsisView(APIView):
             file = request.FILES.get("file")
             # Ensure weights and impacts are properly parsed
             weights = list(map(int, request.POST.get("weights", "").split(",")))  # Convert from JSON string to list
-            # impacts = request.POST.get("impacts", "").split(",")  # Convert from JSON string to list
+            impacts = request.POST.get("impacts", "").split(",")  # Convert from JSON string to list
 
            # Debugging: Print the extracted values
             print("Target Variable:", target_variable)
             print("Problem Type:", problem_type)
             print("Weights:", weights)
             print("Impacts:", impacts)
-            
-            if problem_type == 'classification':
-                impacts = ['+', '+', '+', '+', '+', '-']  # [Accuracy, Precision, Recall, F1-score, AUC-ROC, Log Loss]
-            else:
-                impacts = ['+', '-', '-', '-', '-', '-']
+
             
 
             # return Response({"HJe":"dsd"})
@@ -63,9 +59,9 @@ class AutomlTopsisView(APIView):
 
             catcol=['object']
 
-            if(len(weights)!=8 or len(impacts)!=8):
-                return Response({"error": "Length Not Match"}, status=400)
-            
+            # if(len(weights)>6 ):
+            #     return Response({"error": "Length Not Match"}, status=400)
+        
 
             for i in df.columns:
                 if i in catcol:
@@ -89,7 +85,21 @@ class AutomlTopsisView(APIView):
 
             data = model_results.copy()
             data.set_index("Model", inplace=True)
-            
+            num_columns = data.shape[1]
+
+            if len(weights) > num_columns:
+                weights = weights[:num_columns]  # Trim extra weights
+            else:
+                weights = weights + [0] * (num_columns - len(weights))  # Pad with zeros
+
+            # Convert to numpy array if needed
+            weights = np.array(weights)
+
+            if problem_type == 'classification':
+                impacts = ['+', '+', '+', '+', '+', '-','-']  # [Accuracy, Precision, Recall, F1-score, AUC-ROC, Log Loss]
+            else:
+                impacts = ['+', '-', '-', '-', '-', '-']  # [R², MAE, MSE, RMSE, RMSLE, Training Time]
+
             print("Before TOPSIS:\n", data)
             
             topsis_scores = topsisfunction(data, weights, impacts)
