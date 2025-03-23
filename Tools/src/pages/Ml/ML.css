@@ -3,10 +3,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
     background-color: black;
+    gap: 4rem;
+}
+.ml-header {
+    margin-bottom: 20px;
 }
 
+.ml-header h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.ml-header p {
+    font-size: 16px;
+    color: #555;
+}
+.centre{
+    display: flex;
+    gap: 5rem;
+}
 /* Form & Result Container */
 .ml-box {
     background: rgba(255, 255, 255, 0.1); /* Glassmorphism effect */
@@ -18,7 +36,32 @@
     color: white;
     text-align: center;
 }
+.left{
+    color: white;
+}
+.impacts-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 300px; /* Adjust width as needed */
+    margin-top: 10px;
+}
 
+.impacts-column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Spacing between rows */
+}
+
+.impacts-column p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.right{
+    color: white;
+    /* border: solid red; */
+}
 /* Heading */
 .ml-box h2, .ml-box h3, .ml-box h4 {
     font-size: 22px;

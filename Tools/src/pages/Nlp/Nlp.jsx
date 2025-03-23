@@ -1,5 +1,5 @@
 function NLP() {
-    return <h2>Welcome to the NLP Page (Protected)</h2>;
+    return <h2>Under Construction</h2>;
   }
   
   export default NLP;

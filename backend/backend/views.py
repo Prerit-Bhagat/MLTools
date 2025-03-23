@@ -26,9 +26,9 @@ class AutomlTopsisView(APIView):
             # impacts = request.POST.get("impacts", "").split(",")  # Convert from JSON string to list
 
            # Debugging: Print the extracted values
-            print("Target Variable:", target_variable)
-            print("Problem Type:", problem_type)
-            print("Weights:", weights)
+            # print("Target Variable:", target_variable)
+            # print("Problem Type:", problem_type)
+            # print("Weights:", weights)
             # print("Impacts:", impacts)
 
             
@@ -96,9 +96,9 @@ class AutomlTopsisView(APIView):
             weights = np.array(weights)
 
             if problem_type == 'classification':
-                impacts = ['+', '+', '+', '+', '+', '-','-']  # [Accuracy, Precision, Recall, F1-score, AUC-ROC, Log Loss]
+                impacts = ['+', '+', '+', '+', '+', '+','+','-']  # [Accuracy     AUC  Recall   Prec.      F1   Kappa     MCC  TT (Sec)]
             else:
-                impacts = ['+', '-', '-', '-', '-', '-']  # [R², MAE, MSE, RMSE, RMSLE, Training Time]
+                impacts = ['-', '-', '-', '+', '-', '-']  #  [MAE     MSE    RMSE      R2   RMSLE    MAPE  TT (Sec)]
 
             print("Before TOPSIS:\n", data)
             
@@ -118,7 +118,7 @@ class AutomlTopsisView(APIView):
             return Response({
                 "message": "Best model found successfully",
                 "best_model_name": best_model_name,
-                "metrics": best_model_metrics,  # ✅ Fix: Ensure it's named `metrics`
+                "metrics": best_model_metrics,  
             }, status=200)
 
         except Exception as e:
