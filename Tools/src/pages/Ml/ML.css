@@ -135,3 +135,6 @@
 .ml-metrics li {
     margin: 5px 0;
 }
+form select option{
+    background-color: #333;
+}
