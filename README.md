@@ -51,3 +51,5 @@ npm i
 npm run dev
 ```
 
+
+### NOTE Already Deployed Backend And Frontend But For Now Working Only when all columns are numerical
