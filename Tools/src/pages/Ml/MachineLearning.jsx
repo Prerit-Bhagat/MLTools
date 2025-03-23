@@ -36,7 +36,7 @@ const ML = () => {
         formData.append("weights", weights);
 
         try {
-            const response = await axios.post("http://127.0.0.1:8000/automl/", formData, {
+            const response = await axios.post("https://mltools.onrender.com/automl/", formData, {
                 headers: { "Content-Type": "multipart/form-data" }
             });
             console.log("API Response:", response.data);
