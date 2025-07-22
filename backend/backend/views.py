@@ -78,10 +78,24 @@ class AutomlTopsisView(APIView):
                 reg_setup(data=df, target=target_variable,numeric_imputation="median", categorical_imputation="mode", verbose=False)
                 best_model = reg_compare()
                 model_results = reg_pull()
-   
+
+            if model_results.empty:
+                return Response({"error": "AutoML results are empty. Check data or target variable."}, status=500)
             # Extract best model details
+            # Step 5: Find the model name column (no next() used)
+            model_col = None
+            for col in model_results.columns:
+                if "model" in col.lower():
+                    model_col = col
+                    break
+
+            if model_col is None:
+                return Response({"error": "Model column not found in result table."}, status=500)
+
+            model_results.set_index(model_col, inplace=True)
+
             # model_info = model_results.iloc[0].to_dict()
-            
+            # print("Best Model Info:", model_info)
 
             data = model_results.copy()
             data.set_index("Model", inplace=True)
