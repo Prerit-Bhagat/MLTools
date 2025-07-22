@@ -61,7 +61,7 @@ class AutomlTopsisView(APIView):
             if(problem_type == "classification"):
                 columns = 8
             else:
-                columns = 7,7
+                columns = 7
                 
             if(len(weights)!=columns or len(impacts)!=columns):
                 return Response({"error": "Length Not Match"}, status=400)
