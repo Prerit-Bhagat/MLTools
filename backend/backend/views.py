@@ -58,8 +58,8 @@ class AutomlTopsisView(APIView):
                 return Response({"error": f"Target variable '{target_variable}' not found in CSV"}, status=400)
 
             catcol=['object']
-
-            if(len(weights)!=8 or len(impacts)!=8):
+            rows, columns = df.shape
+            if(len(weights)!=columns-1 or len(impacts)!=columns-1):
                 return Response({"error": "Length Not Match"}, status=400)
             
 
@@ -104,7 +104,7 @@ class AutomlTopsisView(APIView):
             return Response({
                 "message": "Best model found successfully",
                 "best_model_name": best_model_name,
-                "metrics": best_model_metrics,  # ✅ Fix: Ensure it's named `metrics`
+                "metrics": best_model_metrics, 
             }, status=200)
 
         except Exception as e:
