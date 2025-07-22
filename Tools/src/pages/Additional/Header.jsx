@@ -17,8 +17,8 @@ const Header = () => {
       <nav className="Header-Right">
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
-        
-        <div 
+
+        <div
           className="Dropdown"
           onMouseEnter={() => setDropdownOpen(true)}
           onMouseLeave={() => setDropdownOpen(false)}
@@ -27,7 +27,7 @@ const Header = () => {
           {dropdownOpen && (
             <div className="Dropdown-Menu">
               <Link to="/ml">ML</Link>
-              <Link to="/nlp">NLP</Link>
+              {/* <Link to="/nlp">NLP</Link> */}
             </div>
           )}
         </div>
