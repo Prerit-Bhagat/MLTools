@@ -23,7 +23,7 @@ const ML = () => {
 
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("target_variable", targetVariable);
+    formData.append("target_var", targetVariable);
     formData.append("problem_type", problemType);
     formData.append("weights", weights);
     formData.append("impacts", impacts);
@@ -33,13 +33,9 @@ const ML = () => {
     }
 
     try {
-      const response = await axios.post(
-        "https://mltools.onrender.com/automl/",
-        formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
+      const response = await axios.post("https://localhost/automl/", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
       console.log("API Response:", response.data);
       setResult(response.data);
     } catch (err) {
