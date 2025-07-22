@@ -58,8 +58,12 @@ class AutomlTopsisView(APIView):
                 return Response({"error": f"Target variable '{target_var}' not found in CSV"}, status=400)
 
             catcol=['object']
-            rows, columns = df.shape
-            if(len(weights)!=columns-1 or len(impacts)!=columns-1):
+            if(problem_type == "classification"):
+                columns = 8
+            else:
+                columns = 7,7
+                
+            if(len(weights)!=columns or len(impacts)!=columns):
                 return Response({"error": "Length Not Match"}, status=400)
             
 

@@ -33,9 +33,13 @@ const ML = () => {
     }
 
     try {
-      const response = await axios.post("https://localhost/automl/", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const response = await axios.post(
+        "https://mltools.onrender.com/automl/",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
       console.log("API Response:", response.data);
       setResult(response.data);
     } catch (err) {
