@@ -58,14 +58,14 @@ class AutomlTopsisView(APIView):
                 return Response({"error": f"Target variable '{target_var}' not found in CSV"}, status=400)
 
             catcol=['object']
-            if(np.unique(df.dtypes)>5):
-                problem_type = "regression"
-            else:
-                problem_type = "classification"
+            # if(np.unique(df.dtypes)>3):
+                # problem_type = "regression"
+            # else:
+                # problem_type = "classification"
 
             if(problem_type == "classification"):
                 columns = 8
-            else:
+            if(problem_type == "regression"):
                 columns = 7
                 
             if(len(weights)<columns or len(impacts)<columns):
