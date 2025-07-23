@@ -1,94 +1,109 @@
-/* General Page Styling */
-.ml-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: black;
+.ml-page {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Form & Result Container */
-.ml-box {
-    background: rgba(255, 255, 255, 0.1); /* Glassmorphism effect */
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    width: 400px;
-    color: white;
-    text-align: center;
+.ml-card {
+  background: rgba(255, 255, 255, 0.1); /* Glass effect */
+  padding: 2rem;
+  border-radius: 0.75rem;
+  backdrop-filter: blur(12px);
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  color: #fff;
 }
 
-/* Heading */
-.ml-box h2, .ml-box h3, .ml-box h4 {
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 15px;
+.ml-heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
-/* Form Styling */
-.ml-box form {
-    display: flex;
-    flex-direction: column;
+.ml-form {
+  display: flex;
+  flex-direction: column;
 }
 
-/* Input Fields */
-.ml-box input, .ml-box select, .ml-box button {
-    padding: 12px;
-    margin: 8px 0;
-    border-radius: 8px;
-    border: none;
-    font-size: 16px;
-    width: 100%;
+.file-label {
+  position: relative;
+  display: block;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+}
+.file-label input[type="file"] {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  cursor: pointer;
 }
 
-/* Input Field Colors */
-.ml-box input, .ml-box select {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+.ml-form input,
+.ml-form select {
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1rem;
 }
 
-/* Placeholder & Focus Effects */
-.ml-box input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-}
-.ml-box input:focus, .ml-box select:focus {
-    border-color: #00aaff;
-    outline: none;
+.ml-form input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
 }
 
-/* File Input */
-.ml-box input[type="file"] {
-    cursor: pointer;
+.ml-button {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background: #1e88e5;
+  transition: transform 0.2s ease;
+}
+.ml-button:hover {
+  transform: translateY(-2px);
 }
 
-/* Submit & Upload Another Button */
-.ml-box button {
-    background-color: #00aaff;
-    color: black;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
+.results {
+  text-align: center;
 }
 
-.ml-box button:hover {
-    background-color: #0088cc;
-}
-
-/* Error Message */
-.ml-error {
-    color: red;
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-/* Performance Metrics */
 .ml-metrics {
-    text-align: left;
-    margin-top: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  text-align: left;
+}
+.ml-metrics li {
+  margin-bottom: 0.5rem;
 }
 
-.ml-metrics li {
-    margin: 5px 0;
+.metric-key {
+  font-weight: 600;
+}
+
+.ml-error {
+  color: #ff5252;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.875rem;
 }
