@@ -68,7 +68,7 @@ class AutomlTopsisView(APIView):
             # 9. Run PyCaret
             setup_fn(data=df, target=target_var, fold=folds,
                      numeric_imputation="median", categorical_imputation="mode",
-                     verbose=False, silent=True)
+                     verbose=False)
 
             best_model = compare_fn(fold=folds)
             model_results = pull_fn()
