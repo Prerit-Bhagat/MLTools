@@ -80,6 +80,7 @@ class AutomlTopsisView(APIView):
                 return Response({"error": "Could not detect model column in results."}, status=500)
 
             model_results.set_index(model_col, inplace=True)
+            print("Before TOPSIS:\n", model_results)
 
             # Apply TOPSIS
             scores = topsisfunction(model_results, weights, impacts)
@@ -88,7 +89,8 @@ class AutomlTopsisView(APIView):
 
             best_name = model_results.index[0]
             best_metrics = model_results.iloc[0].to_dict()
-
+            print("After TOPSIS:\n", model_results)
+            
             return Response({
                 "message": "Best model found successfully",
                 "best_model_name": best_name,
