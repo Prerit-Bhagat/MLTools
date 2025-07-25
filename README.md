@@ -26,28 +26,4 @@ This project is a web-based application that allows users to upload datasets, sp
 - Tailwind CSS (for styling)
 - Normal CSS (for styling)
 
-## Installation
-
-### 1. Clone the Repository
-```sh
-git clone https://github.com/your-username/MLTools.git
-cd MLTools
-```
-
-### 2. Setup Backend
-```sh
-cd backend
-python -m venv myenv
-source myenv/bin/activate  # On Windows use: myenv\Scripts\activate
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py runserver
-```
-
-### 3. Setup Frontend
-```sh
-cd Tools
-npm i
-npm run dev
-```
 
