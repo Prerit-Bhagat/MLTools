@@ -1,0 +1,122 @@
+:root {
+  --overlay-color: rgba(0, 0, 0, 0.6);
+  --primary-color: #4f46e5;
+  --button-bg: #6366f1;
+  --button-hover: #4f46e5;
+}
+
+.home-container {
+  position: relative;
+  background-image: url("Background.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--overlay-color);
+}
+
+.content-wrapper {
+  position: relative;
+  max-width: 800px;
+  padding: 2rem;
+  text-align: left;
+  z-index: 1;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #e5e7eb;
+}
+
+.cta-button {
+  background-color: var(--button-bg);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: var(--button-hover);
+}
+
+.steps-section {
+  margin-top: 3rem;
+}
+
+.steps-header h2 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.steps-header p {
+  font-size: 1rem;
+  color: #d1d5db;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.step-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.step-icon {
+  background-color: var(--primary-color);
+  color: #fff;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  margin: 0 auto 1rem;
+}
+
+.step-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.step-desc {
+  font-size: 0.875rem;
+  color: #d1d5db;
+}

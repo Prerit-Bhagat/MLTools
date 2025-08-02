@@ -1,0 +1,100 @@
+/* General Page Styling */
+.ml-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+}
+
+/* Form & Result Container */
+.ml-box {
+  background: rgba(255, 255, 255, 0.1); /* Glassmorphism effect */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  width: 400px;
+  color: white;
+  text-align: center;
+}
+
+/* Heading */
+.ml-box h2,
+.ml-box h3,
+.ml-box h4 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* Form Styling */
+.ml-box form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Input Fields */
+.ml-box input,
+.ml-box select,
+.ml-box button {
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  width: 100%;
+}
+
+/* Input Field Colors */
+.ml-box input,
+.ml-box select {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Placeholder & Focus Effects */
+.ml-box input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+.ml-box input:focus,
+.ml-box select:focus {
+  border-color: #00aaff;
+  outline: none;
+}
+
+/* File Input */
+.ml-box input[type="file"] {
+  cursor: pointer;
+}
+
+/* Submit & Upload Another Button */
+.ml-box button {
+  background-color: #00aaff;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.ml-box button:hover {
+  background-color: #0088cc;
+}
+
+/* Error Message */
+.ml-error {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Performance Metrics */
+.ml-metrics {
+  text-align: left;
+  margin-top: 10px;
+}
+
+.ml-metrics li {
+  margin: 5px 0;
+}

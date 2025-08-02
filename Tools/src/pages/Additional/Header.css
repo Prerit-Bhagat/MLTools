@@ -1,0 +1,93 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.Header {
+    display: flex;
+    justify-content: space-between; /* Push logo left and nav right */
+    align-items: center;
+    width: 100%; /* Ensure full width */
+    padding: 10px 20px;
+    background-color: black; /* Light gray background */
+    border-bottom: 2px solid #ddd;
+}
+
+.Header-Left {
+    display: flex;
+    align-items: center;
+}
+
+.Logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+
+.Logo img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+.Logo-text{
+    color: white;
+}
+.Header-Right {
+    display: flex;
+    gap: 20px;
+    position: relative;
+}
+
+.Header-Right a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.Header-Right a:hover {
+    color: #007bff;
+}
+
+.Dropdown {
+    position: relative;
+    cursor: pointer;
+}
+
+.Dropdown-Title {
+    font-weight: bold;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.Dropdown-Title:hover {
+    color: #007bff;
+}
+
+.Dropdown-Menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: black;
+    border: 1px solid black;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    min-width: 120px;
+    z-index: 1000;
+}
+
+.Dropdown-Menu a {
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    transition: background-color 0.3s ease;
+}
+
+.Dropdown-Menu a:hover {
+    background-color: #f1f1f1;
+    color: #007bff;
+}

@@ -1,0 +1,13 @@
+# Ignore Python virtual environments
+myenv/
+
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+
+# Ignore Django migrations
+*/migrations/
+
+# Ignore IDE settings
+.vscode/
+.idea/

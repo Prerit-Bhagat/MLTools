@@ -1,0 +1,127 @@
+.about-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+  padding: 2rem 1rem;
+}
+
+.about-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-hero {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 2rem 0;
+}
+
+.about-hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+}
+
+.about-hero p {
+  font-size: 1.25rem;
+  color: #6b7280;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.features-section {
+  margin-bottom: 4rem;
+}
+
+.features-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 3rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.feature-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.feature-description {
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.mission-section {
+  display: flex;
+  justify-content: center;
+}
+
+.mission-card {
+  background: white;
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  text-align: center;
+}
+
+.mission-card h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+}
+
+.mission-card p {
+  color: #6b7280;
+  line-height: 1.7;
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .about-hero h1 {
+    font-size: 2rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mission-card {
+    padding: 2rem;
+  }
+
+  .about-container {
+    padding: 1rem 0.5rem;
+  }
+}
