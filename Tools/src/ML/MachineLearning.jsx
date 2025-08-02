@@ -204,7 +204,7 @@ const ML = () => {
     formData.append("impacts", impacts);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}`, {
+      const response = await fetch(`https://mltools.onrender.com/automl/`, {
         method: "POST",
         body: formData,
       });
