@@ -204,13 +204,10 @@ const ML = () => {
     formData.append("impacts", impacts);
 
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_API_BASE_URL}/automl/`,
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}`, {
+        method: "POST",
+        body: formData,
+      });
 
       const data = await response.json();
 
