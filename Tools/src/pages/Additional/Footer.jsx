@@ -59,9 +59,7 @@ const Footer = () => {
                 style={{
                   background: "linear-gradient(135deg, #3b82f6, #8b5cf6)",
                 }}
-              >
-                🧠
-              </div>
+              ></div>
               <h2
                 className="text-2xl font-bold"
                 style={{
@@ -99,7 +97,7 @@ const Footer = () => {
                   gap: "0.5rem",
                 }}
               >
-                🏠 Home
+                Home
               </Link>
               <Link
                 to="/about"
@@ -110,7 +108,7 @@ const Footer = () => {
                   gap: "0.5rem",
                 }}
               >
-                ℹ️ About
+                ℹ About
               </Link>
               <Link
                 to="/ml"
@@ -121,7 +119,7 @@ const Footer = () => {
                   gap: "0.5rem",
                 }}
               >
-                🧠 ML Analysis
+                ML Analysis
               </Link>
               <Link
                 to="/nlp"
@@ -132,7 +130,7 @@ const Footer = () => {
                   gap: "0.5rem",
                 }}
               >
-                🔤 NLP Tools
+                NLP Tools
               </Link>
             </div>
           </div>
@@ -150,7 +148,7 @@ const Footer = () => {
                   gap: "0.5rem",
                 }}
               >
-                📊 Model Selection
+                Model Selection
               </Link>
               <a
                 href="#classification"
@@ -161,7 +159,7 @@ const Footer = () => {
                   gap: "0.5rem",
                 }}
               >
-                🎯 Classification
+                Classification
               </a>
               <a
                 href="#regression"
@@ -172,7 +170,7 @@ const Footer = () => {
                   gap: "0.5rem",
                 }}
               >
-                📈 Regression
+                Regression
               </a>
               <a
                 href="#topsis"
@@ -183,7 +181,7 @@ const Footer = () => {
                   gap: "0.5rem",
                 }}
               >
-                🏆 TOPSIS Analysis
+                TOPSIS Analysis
               </a>
             </div>
           </div>
@@ -240,7 +238,7 @@ const Footer = () => {
               flexWrap: "wrap",
             }}
           >
-            <span>Made with ❤️ for data scientists</span>
+            <span>Made with Love for data scientists</span>
             <span>•</span>
             <span>Powered by PyCaret & TOPSIS</span>
             {/* <span>•</span> */}
