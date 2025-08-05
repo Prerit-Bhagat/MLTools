@@ -235,7 +235,7 @@ const ML = () => {
   return (
     <div className="ml-container">
       <div className="ml-header">
-        <h1>🧠 ML Model Finder</h1>
+        <h1> ML Model Finder</h1>
         <p>
           Upload your dataset and discover the best machine learning model using
           TOPSIS analysis
@@ -265,7 +265,7 @@ const ML = () => {
                   <label htmlFor="file-upload" className="file-label">
                     {file ? (
                       <div className="file-selected">
-                        <span className="check-icon">✅</span>
+                        <span className="check-icon">Uploaded</span>
                         <span className="file-name">{file.name}</span>
                       </div>
                     ) : (
@@ -316,7 +316,7 @@ const ML = () => {
               </div>
 
               {/* Feature Count Info */}
-              <div className="info-box">
+              {/* <div className="info-box">
                 <div className="info-icon">ℹ️</div>
                 <div>
                   <strong>Required for {problemType}:</strong>
@@ -338,7 +338,7 @@ const ML = () => {
                     Generate Example
                   </button>
                 </div>
-              </div>
+              </div> */}
 
               {/* Weights */}
               <div className="form-group">
@@ -388,15 +388,15 @@ const ML = () => {
                 className="submit-button"
               >
                 {loading
-                  ? "🔄 Analyzing Data..."
-                  : "📊 Find Best Model with TOPSIS"}
+                  ? " Analyzing Data..."
+                  : " Find Best Model with TOPSIS"}
               </button>
             </form>
           ) : (
             // Results Display
             <div className="results-container">
               <div className="success-banner">
-                <div className="success-icon">🏆</div>
+                <div className="success-icon">1: </div>
                 <h3>Best Model Found with TOPSIS!</h3>
                 <p>
                   <strong>Model:</strong> {result.best_model_name}
@@ -406,7 +406,7 @@ const ML = () => {
               {/* Performance Metrics */}
               {result?.metrics && Object.keys(result.metrics).length > 0 && (
                 <div className="metrics-section">
-                  <h4>📊 Performance Metrics & TOPSIS Score</h4>
+                  <h4> Performance Metrics & TOPSIS Score</h4>
                   <div className="metrics-grid">
                     {Object.entries(result.metrics).map(([key, value]) => (
                       <div
@@ -416,7 +416,7 @@ const ML = () => {
                         }`}
                       >
                         <div className="metric-label">
-                          {key === "TOPSIS Score" ? "🎯 " : ""}
+                          {key === "TOPSIS Score" ? "Score " : ""}
                           {key.replace(/_/g, " ")}
                         </div>
                         <div className="metric-value">
@@ -429,7 +429,7 @@ const ML = () => {
               )}
 
               <div className="info-box">
-                <div className="info-icon">💡</div>
+                <div className="info-icon">Model</div>
                 <p>
                   This model was selected using TOPSIS (Technique for Order
                   Preference by Similarity to Ideal Solution) analysis, which
@@ -439,7 +439,7 @@ const ML = () => {
               </div>
 
               <button onClick={resetForm} className="reset-button">
-                📁 Upload Another File
+                Upload Another File
               </button>
             </div>
           )}

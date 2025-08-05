@@ -234,7 +234,7 @@ const Header = () => {
                     onClick={handleLinkClick}
                   >
                     <span className="flex items-center">
-                      <span className="mr-2">🧠</span>
+                      {/* <span className="mr-2">🧠</span> */}
                       ML Analysis
                     </span>
                   </Link>
@@ -244,7 +244,7 @@ const Header = () => {
                     onClick={handleLinkClick}
                   >
                     <span className="flex items-center">
-                      <span className="mr-2">🔤</span>
+                      {/* <span className="mr-2">🔤</span> */}
                       NLP Tools
                     </span>
                   </Link>
@@ -252,18 +252,19 @@ const Header = () => {
               )}
             </div>
           </nav>
+        </div>
 
-          {/* Mobile menu button */}
+        {/* Mobile menu button
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden p-2 rounded-md text-gray-700 hover:text-blue-600 transition-colors"
           >
             <span className="text-xl">{mobileMenuOpen ? "✕" : "☰"}</span>
           </button>
-        </div>
+        </div> */}
 
         {/* Mobile Navigation */}
-        {mobileMenuOpen && (
+        {/* {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t bg-white">
             <div className="flex flex-col space-y-2">
               <Link
@@ -295,8 +296,8 @@ const Header = () => {
                 🔤 NLP Tools
               </Link>
             </div>
-          </div>
-        )}
+          </div> */}
+        {/* )} */}
       </div>
     </header>
   );
