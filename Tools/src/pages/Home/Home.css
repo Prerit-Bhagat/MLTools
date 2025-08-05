@@ -52,7 +52,7 @@
 }
 
 .cta-button {
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  background: linear-gradient(135deg, #000000, #000000);
   color: white;
   padding: 1rem 2rem;
   border: none;
@@ -67,7 +67,7 @@
 
 .cta-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 4, 11, 0.3);
 }
 
 .cta-button.secondary {
@@ -161,7 +161,7 @@
 }
 
 .cta-section {
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  background: linear-gradient(135deg, #000000, #000000);
   color: white;
   padding: 3rem 2rem;
   border-radius: 1rem;
