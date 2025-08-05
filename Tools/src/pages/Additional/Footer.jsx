@@ -60,7 +60,7 @@ const Footer = () => {
                   background: "linear-gradient(135deg, #3b82f6, #8b5cf6)",
                 }}
               ></div>
-              <h2
+              {/* <h2
                 className="text-2xl font-bold"
                 style={{
                   background: "linear-gradient(135deg, #60a5fa, #a78bfa)",
@@ -70,7 +70,7 @@ const Footer = () => {
                 }}
               >
                 MLTools
-              </h2>
+              </h2> */}
             </div>
             <p
               className="text-gray-300 leading-relaxed max-w-md"
@@ -108,7 +108,7 @@ const Footer = () => {
                   gap: "0.5rem",
                 }}
               >
-                ℹ About
+                About
               </Link>
               <Link
                 to="/ml"

@@ -141,7 +141,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  // const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const dropdownTimeoutRef = useRef(null);
 
   const handleMouseEnter = () => {
