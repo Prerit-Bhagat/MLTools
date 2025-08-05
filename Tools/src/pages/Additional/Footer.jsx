@@ -54,12 +54,12 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <div className="flex items-center mb-4" style={{ gap: "0.75rem" }}>
-              <div
+              {/* <div
                 className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-lg"
                 style={{
                   background: "linear-gradient(135deg, #3b82f6, #8b5cf6)",
                 }}
-              ></div>
+              ></div> */}
               {/* <h2
                 className="text-2xl font-bold"
                 style={{
