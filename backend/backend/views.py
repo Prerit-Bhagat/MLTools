@@ -6,6 +6,13 @@ from django.conf import settings
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser, FormParser
+from .topsis import topsisfunction
+from textblob import TextBlob
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
 
 from pycaret.classification import setup as cls_setup, compare_models as cls_compare, pull as cls_pull
 from pycaret.regression import setup as reg_setup, compare_models as reg_compare, pull as reg_pull
@@ -99,6 +106,51 @@ class AutomlTopsisView(APIView):
 
         except Exception as e:
             return Response({"error": str(e)}, status=500)
+
+
+
+@csrf_exempt
+@require_POST
+def sentiment_analysis_view(request):
+    try:
+        text_column = request.POST.get("text_column")
+        file = request.FILES.get("file")
+
+        if not file or not text_column:
+            return JsonResponse({"error": "Missing file or text_column parameter."}, status=400)
+
+        # Save and read file
+        upload_path = os.path.join(settings.MEDIA_ROOT, "uploads", file.name)
+        os.makedirs(os.path.dirname(upload_path), exist_ok=True)
+        default_storage.save(upload_path, ContentFile(file.read()))
+        df = pd.read_csv(upload_path)
+
+        if text_column not in df.columns:
+            return JsonResponse({"error": f"Column '{text_column}' not found in file."}, status=400)
+
+        df[text_column].fillna("", inplace=True)
+
+        # Sentiment Analysis
+        sentiments = df[text_column].apply(lambda text: TextBlob(str(text)).sentiment)
+        df["polarity"] = sentiments.apply(lambda x: x.polarity)
+        df["subjectivity"] = sentiments.apply(lambda x: x.subjectivity)
+        df["sentiment"] = df["polarity"].apply(
+            lambda p: "positive" if p > 0 else "negative" if p < 0 else "neutral"
+        )
+        
+        sentiment_counts = df["sentiment"].value_counts().to_dict()
+
+        # Convert limited results for table/display
+        sample_results = df[[text_column, "polarity", "subjectivity", "sentiment"]].head(100).to_dict(orient="records")
+
+        return JsonResponse({
+            "message": "Sentiment analysis completed.",
+            "results": sample_results,
+            "sentiment_distribution": sentiment_counts  # For frontend graph
+        }, status=200)
+
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
 
 # import os
 # import pandas as pd

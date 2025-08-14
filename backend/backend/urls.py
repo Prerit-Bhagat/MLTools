@@ -23,5 +23,5 @@ from .views import *
 
 urlpatterns = [
     path("automl/", AutomlTopsisView.as_view(), name="automl"),
-    # path('student/', StudentList.as_view(), name='student-list'),
+    path('sentiment-analysis/', sentiment_analysis_view, name='sentiment_analysis'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

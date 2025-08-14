@@ -53,25 +53,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <div className="flex items-center mb-4" style={{ gap: "0.75rem" }}>
-              {/* <div
-                className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-lg"
-                style={{
-                  background: "linear-gradient(135deg, #3b82f6, #8b5cf6)",
-                }}
-              ></div> */}
-              {/* <h2
-                className="text-2xl font-bold"
-                style={{
-                  background: "linear-gradient(135deg, #60a5fa, #a78bfa)",
-                  backgroundClip: "text",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                MLTools
-              </h2> */}
-            </div>
+            <div
+              className="flex items-center mb-4"
+              style={{ gap: "0.75rem" }}
+            ></div>
             <p
               className="text-gray-300 leading-relaxed max-w-md"
               style={{ lineHeight: "1.6" }}
