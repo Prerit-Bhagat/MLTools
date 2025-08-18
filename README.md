@@ -31,10 +31,12 @@ This project is a web-based application that allows users to upload datasets, sp
 ### How to use
 
 Required for classification:Accuracy | AUC | Recall | Precision | F1 | Kappa | MCC | TT(Training Time) 
+
 Weights: 8 integer values (comma-separated)
 Impacts: 8 values of + or - (comma-separated)
 
 Required for regression:MAE | MSE | RMSE | R2 | RMSLE | MAPE | TT(Training Time) 
+
 Weights: 7 integer values (comma-separated)
 Impacts: 7 values of + or - (comma-separated)
 
