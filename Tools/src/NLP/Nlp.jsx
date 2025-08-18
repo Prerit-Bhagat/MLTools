@@ -24,19 +24,19 @@ const NLP = () => {
             </p>
             <div className="features-preview">
               <div className="feature-item">
-                <span className="feature-icon">😊</span>
+                <span className="feature-icon"></span>
                 <span>Sentiment Analysis</span>
               </div>
               <div className="feature-item">
-                <span className="feature-icon">📝</span>
+                <span className="feature-icon"></span>
                 <span>Text Classification</span>
               </div>
               <div className="feature-item">
-                <span className="feature-icon">🏷️</span>
+                <span className="feature-icon"></span>
                 <span>Named Entity Recognition</span>
               </div>
               <div className="feature-item">
-                <span className="feature-icon">🔍</span>
+                <span className="feature-icon"></span>
                 <span>Text Summarization</span>
               </div>
             </div>
