@@ -63,11 +63,12 @@ MIDDLEWARE = [
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",   
+    "https://ml-tools.vercel.app", 
+    "http://localhost:3000",   # React dev server
     "http://127.0.0.1:3000",
-    "http://localhost:5173",   
+    "http://localhost:5173",   # if using Vite
     "http://127.0.0.1:5173",
-    "https://ml-tools.vercel.app/",  
+     
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -94,19 +95,33 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
+# Database configuration
+DATABASE_URL = os.environ.get("DATABASE_URL")
+if DATABASE_URL:
+    DATABASES = {
+        "default": dj_database_url.parse(DATABASE_URL, conn_max_age=600)
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
-database_url=os.environ.get("DATABASE_URL")
-database_url="postgresql://pycaretdetails_user:3XE0x25dOARRDsf5k45NzX76qbfnYWO7@dpg-cvdeo05svqrc73eg2jl0-a.oregon-postgres.render.com/pycaretdetails"
-DATABASES["default"]=dj_database_url.parse(database_url)
+# database_url=os.environ.get("DATABASE_URL")
+# database_url="postgresql://pycaretdetails_user:3XE0x25dOARRDsf5k45NzX76qbfnYWO7@dpg-cvdeo05svqrc73eg2jl0-a.oregon-postgres.render.com/pycaretdetails"
+# DATABASES["default"]=dj_database_url.parse(database_url)
 
 # postgresql://pycaretdetails_user:3XE0x25dOARRDsf5k45NzX76qbfnYWO7@dpg-cvdeo05svqrc73eg2jl0-a/pycaretdetails
 # Password validation
