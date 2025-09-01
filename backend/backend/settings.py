@@ -96,27 +96,21 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
 # Database configuration
-DATABASES = {
-    "default": dj_database_url.parse(
-        os.environ.get("DATABASE_URL"),  # <-- uses Render environment variable
-        conn_max_age=600,
-        ssl_require=True                # <-- enforce SSL for Render Postgres
-    )
-}
+
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 # database_url=os.environ.get("DATABASE_URL")
-# # database_url="postgresql://pycaretdetails_user:3XE0x25dOARRDsf5k45NzX76qbfnYWO7@dpg-cvdeo05svqrc73eg2jl0-a.oregon-postgres.render.com/pycaretdetails"
-# DATABASES["default"]=dj_database_url.parse(database_url)
+database_url="postgresql://pycaretdetails_user:3XE0x25dOARRDsf5k45NzX76qbfnYWO7@dpg-cvdeo05svqrc73eg2jl0-a.oregon-postgres.render.com/pycaretdetails"
+DATABASES["default"]=dj_database_url.parse(database_url)
 
 # postgresql://pycaretdetails_user:3XE0x25dOARRDsf5k45NzX76qbfnYWO7@dpg-cvdeo05svqrc73eg2jl0-a/pycaretdetails
 # Password validation
