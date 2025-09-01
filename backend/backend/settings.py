@@ -97,12 +97,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 database_url=os.environ.get("DATABASE_URL")
 database_url="postgresql://pycaretdetails_user:3XE0x25dOARRDsf5k45NzX76qbfnYWO7@dpg-cvdeo05svqrc73eg2jl0-a.oregon-postgres.render.com/pycaretdetails"
