@@ -59,7 +59,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",   
+    "http://127.0.0.1:3000",
+    "http://localhost:5173",   
+    "http://127.0.0.1:5173",
+    "https://ml-tools.vercel.app/",  
+]
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -88,14 +97,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
-# database_url=os.environ.get("DATABASE_URL")
+database_url=os.environ.get("DATABASE_URL")
 database_url="postgresql://pycaretdetails_user:3XE0x25dOARRDsf5k45NzX76qbfnYWO7@dpg-cvdeo05svqrc73eg2jl0-a.oregon-postgres.render.com/pycaretdetails"
 DATABASES["default"]=dj_database_url.parse(database_url)
 
@@ -131,6 +140,8 @@ USE_I18N = True
 USE_TZ = True
 
 
+SESSION_COOKIE_SAMESITE = None
+SESSION_COOKIE_SECURE = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
@@ -140,3 +151,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "Your_Email"
+EMAIL_HOST_PASSWORD = "Your_Password"
+TIME_ZONE = 'Asia/Kolkata'
