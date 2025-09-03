@@ -120,7 +120,8 @@ DATABASES = {
 }
 
 # For Render deployment
-database_url = os.environ.get("DATABASE_URL") or "postgresql://pycaretdetails_user:3XE0x25dOARRDsf5k45NzX76qbfnYWO7@dpg-cvdeo05svqrc73eg2jl0-a.oregon-postgres.render.com/pycaretdetails"
+# database_url = os.environ.get("DATABASE_URL") or "postgresql://pycaretdetails_user:3XE0x25dOARRDsf5k45NzX76qbfnYWO7@dpg-cvdeo05svqrc73eg2jl0-a.oregon-postgres.render.com/pycaretdetails"
+database_url='postgresql://neondb_owner:npg_3ofnSNQ0zVHU@ep-fragrant-bread-a1br6wt5-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
 
 DATABASES["default"] = dj_database_url.parse(
     database_url,
@@ -128,6 +129,7 @@ DATABASES["default"] = dj_database_url.parse(
     ssl_require=True  # 🔑 This enforces SSL for Render Postgres
 )
 
+# print(database_url)
 
 # postgresql://pycaretdetails_user:3XE0x25dOARRDsf5k45NzX76qbfnYWO7@dpg-cvdeo05svqrc73eg2jl0-a/pycaretdetails
 # Password validation
