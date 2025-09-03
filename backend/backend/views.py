@@ -40,7 +40,6 @@ class AutomlTopsisView(APIView):
     def post(self, request, *args, **kwargs):
         # return Response({"Hello":"World"})
         try:
-            # return Response({"Hello":"World"})
             target_var = request.data.get("target_var")
             problem_type = request.data.get("problem_type", "classification").lower()
             file = request.FILES.get("file")
@@ -123,7 +122,6 @@ class AutomlTopsisView(APIView):
 
         except Exception as e:
             return Response({"error": str(e)}, status=500)
-            # return Response({"error": str(e)}, status=500)
 
 
 
@@ -166,7 +164,7 @@ class RegisterView(APIView):
             name=name,
             email=email,
             phone=phone,
-            password=make_password(password)  
+            password=password
         )
         user.save()
 
@@ -308,26 +306,26 @@ class ForgotPasswordView(APIView):
             )
 
 
-class RegistrationView(APIView):
-    def post(self, request, format=None):
-        request.data["password"] = make_password(
-            password=request.data["password"], salt=SALT
-        )
-        serializer = UserSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(
-                {"success": True, "message": "You are now registered on our website!"},
-                status=status.HTTP_200_OK,
-            )
-        else:
-            error_msg = ""
-            for key in serializer.errors:
-                error_msg += serializer.errors[key][0]
-            return Response(
-                {"success": False, "message": error_msg},
-                status=status.HTTP_200_OK,
-            )
+# class RegistrationView(APIView):
+#     def post(self, request, format=None):
+#         request.data["password"] = make_password(
+#             password=request.data["password"], salt=SALT
+#         )
+#         serializer = UserSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(
+#                 {"success": True, "message": "You are now registered on our website!"},
+#                 status=status.HTTP_200_OK,
+#             )
+#         else:
+#             error_msg = ""
+#             for key in serializer.errors:
+#                 error_msg += serializer.errors[key][0]
+#             return Response(
+#                 {"success": False, "message": error_msg},
+#                 status=status.HTTP_200_OK,
+#             )
 
 
 
