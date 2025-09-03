@@ -135,7 +135,8 @@ class LoginView(APIView):
         except User.DoesNotExist:
             return Response({"success": False, "message": "User does not exist!"})
 
-        if check_password(password, user.password):
+        # if check_password(password, user.password):
+        if user.password == password:
             response = Response({"success": True, "message": "Login successful","name": user.name})
             response.set_cookie(
                 key="auth_user",
@@ -164,6 +165,7 @@ class RegisterView(APIView):
             name=name,
             email=email,
             phone=phone,
+            # password=make_password(password)  
             password=password
         )
         user.save()
